@@ -1,0 +1,22 @@
+{% extends 'main/pattern.html' %}
+
+{% block title %}Loggin{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <main class="perviy">
+            <h1>Login</h1>
+            <form action="" class="mt-2 mb-5" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label for="">{{ failed.label }}</label>
+                    {{ field }}
+                    <small class="text-danger">{{ field.errors }}</small>
+                {% endfor %}
+                <button class="btn btn-warning">Login</button>
+            </form>
+            <h5>Still not registered? <a href="{% url 'main' %}">Register</a></h5>
+        </main>
+    </div>
+
+{% endblock %}

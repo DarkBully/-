@@ -1,0 +1,74 @@
+body {
+    background: #888787;
+}
+
+body h1 {
+    margin-top: 50px;
+    font-size: medium;
+    
+}
+
+div main form button {
+    margin-bottom: 50px;
+}
+
+aside .right-aside{
+    float: right;
+    background: rgb(100, 93, 98);
+}
+aside {
+    float: left;
+    background: rgb(100, 93, 98);
+    width: 18%;
+    padding: 2.5%;
+    height: 150vh;
+    color:blanchedalmond;
+    border-right: 5px solid #7a7070;
+}
+
+aside .DarkBully {
+    
+    font-size: 30px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: -5px;
+}
+
+aside ul button {
+    color: rgba(75, 14, 70, 0.288);
+    display: block;
+    margin-top: 20px;
+}
+
+aside ul button {
+    color:rgb(165, 15, 15);
+}
+
+.perviy {
+    text-align: center;
+    width: 85%;
+    text-align: center;
+    display: grid;
+    padding-top: 10px;
+    justify-content: center;
+    max-width: 400px;
+    margin: 100px auto;
+}
+
+.perviy h1 {
+    font-size: 50px;
+}
+
+.formCR {
+    text-align: center;
+    display: grid;
+    padding-top: 10px;
+    justify-content: center;
+}
+a .Create button {
+    margin-top: 100px;
+    text-align: center;
+    display: grid;
+    padding-top: 100px;
+}

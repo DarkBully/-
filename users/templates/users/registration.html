@@ -1,0 +1,19 @@
+{% load static %}
+{% include 'main/pattern.html' %}
+
+    {% block content %}
+    <div class="perviy">
+            <h1>Register</h1>
+            <form action="" class="mt-2 mb-5" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label for="">{{ failed.label }}</label>
+                    {{ field }}
+                    <small class="text-danger">{{ field.errors }}</small>
+                {% endfor %}
+                <button type="submit" class="btn btn-warning">Register account</button>
+            </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

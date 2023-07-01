@@ -1,0 +1,18 @@
+{% extends 'main/pattern2.html' %}
+
+{% block title %}DB's first site{% endblock %}
+
+{% block content %}
+    <div class="perviy">
+        <h1>Hello my dear Friend!</h1>
+        <p>Hi there! This site is suitable for both beginners in IT
+            and for those who want to recruit a team of specialists or are
+            looking for a team themselves! In general, our project was concieved
+            as helping all newcomers and already hardened Jedi to find their 
+            place in this digital madness!
+        </p>
+        <a href="{% url 'main' %}">
+            <button class="btn btn-warning">Join us!</button>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="icon" href="data:;base64,=">
+    <title>Profile</title>
+</head>
+<body>
+        <div class="container-fluid">
+            {{ user.username }}
+            <aside>
+                <a href="{% url 'logout' %}"><button class="btn btn-warning">Log Out</button></a>
+                <footer>
+                    &copy; DarkBully
+                </footer>
+            </aside>
+            <a href="{% url 'create-post' %}" class="Create"><button class="btn btn-warning">Create new post</button></a>
+        </div>
+        <div>
+            {% for post in posts %}
+            <article class="">
+                <hr class="">
+                <a href="{% url 'user_page' post.id %}" class="">
+                    <div class="">
+                        <img src="{{ post.image.url }}" alt="Image" class="img-fluid">                            
+                    </div>
+                    <h2>{{ post.description|truncatechars:"15" }}</h2>
+                </a>
+                <div>
+                    <span class="">{{ post.user.username }}</span>
+                    <span class="">{{ post.creation_date|date:"M d, Y D"}}</span>
+                </div>
+                <hr>
+                <div>
+                    <span>{{ post.comments.count }}</span>
+                    <span>by {{ post.user.first_name }} {{ post.user.last_name }}</span>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <div class="container-fluid">
+            <main class="tm-main">        
+                <div class="imegeplace">
+                    <img src="{{ post.image.url }}" alt="" class="post-image">
+                    <div>
+                        <h3>{{ post.description }}</h3>
+                        <p>{{ post.user.username }}</p>
+                        <p>{{ post.comments.count }}</p>
+                        {% if post.user == user %}
+                        <form action ="{% url 'delete-post' post.id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                    <form action="{% url 'create-comment' %}" method="post" class="" enctype="multipart/form-data">
+                        <div class="" style="gap: 50px; width: 100% ;">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <label for="">{{ field.label }}</label>
+                            {{ field }}
+                            {% endfor %}
+                            <button type="submit" class="btn btn-warning">Ok</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                    {% for comment in post.comments.all %}
+                    <div class="">
+                        <h3>{{ comment.content }}</h3>
+                        <p>{{ comments.user.username}}</p>
+                        {% if user == comment.user %}
+                        <form action ="{% url 'delete-comment' comment.id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+        </div>
+</body>
+</html>
+
